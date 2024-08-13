@@ -1,4 +1,5 @@
-import reactImage from "../assets/react-core-concepts.png";
+import reactImage from "../../assets/react-core-concepts.png";
+import "./Header.css";
 
 const arrayElements = ["HTML", "REACT", "JSX", "CSS", "FRONTEND"];
 
@@ -6,7 +7,7 @@ function randomNumber() {
   return Math.floor(Math.random() * arrayElements.length);
 }
 
-export function Header() {
+export default function Header() {
   const textElement = arrayElements[randomNumber()];
   return (
     <header>
