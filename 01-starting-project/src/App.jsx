@@ -1,4 +1,6 @@
-import componentImage from "./assets/components.png";
+
+import { CORE_CONCEPTS } from "./data";
+import reactImage from "./assets/react-core-concepts.png";
 
 const arrayElements = ["HTML", "REACT", "JSX", "CSS", "FRONTEND"];
 
@@ -10,7 +12,7 @@ function Header() {
   const textElement = arrayElements[randomNumber()];
   return (
     <header>
-      <img src={componentImage} alt="Stylized atom" />
+      <img src={reactImage} alt="Stylized atom" />
       <h1>React Essentials</h1>
       <p>
         {textElement} React concepts you will need for almost any app you are
@@ -23,7 +25,7 @@ function Header() {
 function CoreConcept(props){
   return (
     <li>
-      <img src={props.imgSrc}/>
+      <img src={props.image}/>
       <h3>{props.title}</h3>
       <p>{props.description}</p>
     </li>
@@ -39,17 +41,17 @@ function App() {
           <h2>Core concepts</h2>
           <ul>
             <CoreConcept 
-              title="HTML" 
-              description="HyperText Markup Language" 
-              imgSrc={componentImage}/>
+              title={CORE_CONCEPTS[0].title}
+              description={CORE_CONCEPTS[0].description}
+              image={CORE_CONCEPTS[0].image}/>
+
             <CoreConcept 
-              title="HTML" 
-              description="HyperText Markup Language" 
-              imgSrc={componentImage}/>
-            <CoreConcept 
-              title="HTML" 
-              description="HyperText Markup Language" 
-              imgSrc={componentImage}/>
+              title={CORE_CONCEPTS[1].title}
+              description={CORE_CONCEPTS[1].description}
+              image={CORE_CONCEPTS[1].image}/>
+
+            <CoreConcept {...CORE_CONCEPTS[2]}/>
+            <CoreConcept {...CORE_CONCEPTS[3]}/>
           </ul>
         </section>
       </main>
