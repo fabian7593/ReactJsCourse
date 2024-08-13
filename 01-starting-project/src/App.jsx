@@ -8,7 +8,7 @@ import TabButton from "./components/TabButton.jsx";
 
 function App() {
 
-  const [ messageTab, setMessageTab ] = useState("components");
+  const [ messageTab, setMessageTab ] = useState();
 
   function onClickTabButton(message){
     setMessageTab(message);
@@ -37,22 +37,26 @@ function App() {
           </ul>
         </section>
         <section id="examples">
-        <h2>Examples</h2>
-        <menu>
-           {/* <TabButton onSelected={onClickTabButton}>Component</TabButton> */}
-          <TabButton onSelected={() => onClickTabButton("components")}>Component</TabButton>
-          <TabButton onSelected={() => onClickTabButton("jsx")}>JSX</TabButton>
-          <TabButton onSelected={() => onClickTabButton("props")}>Props</TabButton>
-          <TabButton onSelected={() => onClickTabButton("state")}>State</TabButton>
-        </menu>
-        {messageTab}
-        <div id="tab-content">
-          <h3>{EXAMPLES[messageTab].title}</h3>
-          <p>{EXAMPLES[messageTab].description}</p>
-          <pre>
-            <code>{EXAMPLES[messageTab].code}</code>
-          </pre>
-        </div>
+          <h2>Examples</h2>
+          <menu>
+            {/* <TabButton onSelected={onClickTabButton}>Component</TabButton> */}
+            <TabButton onSelected={() => onClickTabButton("components")}>Component</TabButton>
+            <TabButton onSelected={() => onClickTabButton("jsx")}>JSX</TabButton>
+            <TabButton onSelected={() => onClickTabButton("props")}>Props</TabButton>
+            <TabButton onSelected={() => onClickTabButton("state")}>State</TabButton>
+          </menu>
+          {!messageTab ? <p>Please select a tab</p> : null}
+
+          {messageTab ? 
+            <div id="tab-content">
+              <h3>{EXAMPLES[messageTab].title}</h3>
+              <p>{EXAMPLES[messageTab].description}</p>
+              <pre>
+                <code>{EXAMPLES[messageTab].code}</code>
+              </pre>
+            </div> 
+          : null}
+          
         </section>
       </main>
     </div>
