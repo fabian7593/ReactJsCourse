@@ -1,13 +1,17 @@
 
-import { CORE_CONCEPTS } from "./data";
+import { useState } from "react";
+
+import { CORE_CONCEPTS, EXAMPLES } from "./data";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
 
+  const [ messageTab, setMessageTab ] = useState("components");
+
   function onClickTabButton(message){
-    console.log(message);
+    setMessageTab(message);
   }
 
 
@@ -36,11 +40,19 @@ function App() {
         <h2>Examples</h2>
         <menu>
            {/* <TabButton onSelected={onClickTabButton}>Component</TabButton> */}
-          <TabButton onSelected={() => onClickTabButton("Component")}>Component</TabButton>
-          <TabButton onSelected={() => onClickTabButton("JSX")}>JSX</TabButton>
-          <TabButton onSelected={() => onClickTabButton("Props")}>Props</TabButton>
-          <TabButton onSelected={() => onClickTabButton("State")}>State</TabButton>
+          <TabButton onSelected={() => onClickTabButton("components")}>Component</TabButton>
+          <TabButton onSelected={() => onClickTabButton("jsx")}>JSX</TabButton>
+          <TabButton onSelected={() => onClickTabButton("props")}>Props</TabButton>
+          <TabButton onSelected={() => onClickTabButton("state")}>State</TabButton>
         </menu>
+        {messageTab}
+        <div id="tab-content">
+          <h3>{EXAMPLES[messageTab].title}</h3>
+          <p>{EXAMPLES[messageTab].description}</p>
+          <pre>
+            <code>{EXAMPLES[messageTab].code}</code>
+          </pre>
+        </div>
         </section>
       </main>
     </div>
