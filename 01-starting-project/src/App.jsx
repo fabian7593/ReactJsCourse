@@ -40,10 +40,30 @@ function App() {
           <h2>Examples</h2>
           <menu>
             {/* <TabButton onSelected={onClickTabButton}>Component</TabButton> */}
-            <TabButton onSelected={() => onClickTabButton("components")}>Component</TabButton>
-            <TabButton onSelected={() => onClickTabButton("jsx")}>JSX</TabButton>
-            <TabButton onSelected={() => onClickTabButton("props")}>Props</TabButton>
-            <TabButton onSelected={() => onClickTabButton("state")}>State</TabButton>
+            <TabButton 
+                      isSelected={messageTab === "components"}
+                      onSelected={() => onClickTabButton("components")}>
+                      Component
+            </TabButton>
+
+            <TabButton 
+                      isSelected={messageTab === "jsx"}
+                      onSelected={() => onClickTabButton("jsx")}>
+                      JSX
+            </TabButton>
+
+            <TabButton 
+                      isSelected={messageTab === "props"}
+                      onSelected={() => onClickTabButton("props")}>
+                      Props
+            </TabButton>
+
+            <TabButton 
+                      isSelected={messageTab === "state"}
+                      onSelected={() => onClickTabButton("state")}>
+                      State
+            </TabButton>
+
           </menu>
           {!messageTab ? <p>Please select a tab</p> : null}
 
